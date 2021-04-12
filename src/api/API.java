@@ -5,6 +5,11 @@
  */
 package api;
 
+import java.net.URI;
+import java.net.http.*;
+import java.net.http.HttpResponse.BodyHandlers;
+import java.nio.file.*;
+
 /**
  *
  * @author asus
@@ -14,9 +19,22 @@ public class API {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        desktop desktop = new desktop();
-        desktop.setVisible(true);
+    
+    public void getTodoList(String uri) throws Exception {
+        //Create http client
+        HttpClient client = HttpClient.newHttpClient();
+        
+        //Request body from a String
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://foo.com"))
+                .header("Content-Type","application/json; charset=UTF-8")
+//        .POST(BodyPublishers.ofString("JSON payload string"))
+                .build();
+        
+        HttpResponse<Path> response = 
+                client.send(request, BodyHandlers.ofFile(Paths.get("todo.json")));
+        
     }
+    
     
 }
