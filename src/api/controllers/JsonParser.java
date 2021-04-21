@@ -1,6 +1,6 @@
 package api.controllers;
 import api.desktop;
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 import api.models.Todo;
 
 import java.io.BufferedReader;
@@ -40,10 +40,10 @@ public class JsonParser {
             }
         }
 
-        TodoList tdList= new Gson().fromJson(json, TodoList.class);
-        for(Todo st: tdList.getTodoList()){
-            System.out.println(st);
-        }
+//        TodoList tdList= new Gson().fromJson(json, TodoList.class);
+//        for(Todo st: tdList.getTodoList()){
+//            System.out.println(st);
+//        }
 
     }
 }
